@@ -25,7 +25,9 @@ class CalendarsController < ApplicationController
   end
 
   def get_week
+    
     wdays = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)']
+    wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
 
     @todays_date = Date.today
     @week_days = []
@@ -42,13 +44,13 @@ class CalendarsController < ApplicationController
       if wday_num >= 7
         wday_num = wday_num - 7
       end
-
       days = { 
         month: (@todays_date + x).month, 
         date: (@todays_date + x).day, 
         plans: today_plans, 
         wday: wdays[wday_num] # wdays配列から値を取り出す
       }
+      days = { month: (@todays_date + x).month, date: (@todays_date + x).day, plans: today_plans }
       @week_days.push(days)
     end
   end
